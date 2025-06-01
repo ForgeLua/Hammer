@@ -1,0 +1,3 @@
+[submodule "core/vendor/luarocks"]
+	path = core/vendor/luarocks
+	url = https://github.com/luarocks/luarocks.git

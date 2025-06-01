@@ -1,3 +1,0 @@
-[submodule "vendor/luarocks"]
-	path = vendor/luarocks
-	url = https://github.com/luarocks/luarocks.git

@@ -1,0 +1,27 @@
+#!/usr/bin/env lua
+
+local CommandLineInterpreter = require("core.cli.base")
+local Log = require("core.log.base")
+local cli = CommandLineInterpreter:new()
+
+cli:RegisterCommand("init", function()
+    local OsExecute = require("core.os.base")
+    local distro_package_manager = require("core.os.helper")
+
+    local system_id = string.upper(OsExecute.GetSystemId())
+    if (not distro_package_manager[system_id]) then
+        Log.Error("Could not read /etc/os-release. Assuming a non-Linux OS.")
+        return nil
+    end
+
+    local command  = distro_package_manager[system_id].COMMAND
+    local packages = distro_package_manager[system_id].PACKAGES
+    local is_success = OsExecute.Run(string.format(command, packages))
+    if (not is_success) then
+        Log.Error("zzz")
+        return nil
+    end
+    
+end, "Install all dependencies and set up the project structure.", "Use 'init' to initialize the project.")
+
+cli:Run(arg or {})

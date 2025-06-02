@@ -1,27 +1,39 @@
-#!/usr/bin/env lua
+#!/usr/bin/env moon
+require("core.cli.base")
 
-local CommandLineInterpreter = require("core.cli.base")
-local Log = require("core.log.base")
-local cli = CommandLineInterpreter:new()
+print(Core.CommandLineInterpreter!)
+-- local CommandLineInterpreter = require("core.cli.base")
+-- local Log = require("core.log.base")
+-- local cli = CommandLineInterpreter:new()
 
-cli:RegisterCommand("init", function()
-    local OsExecute = require("core.os.base")
-    local distro_package_manager = require("core.os.helper")
+-- cli:RegisterCommand("init", function(arg)
+--     local OsExecute = require("core.os.base")
+--     local Helper    = require("core.os.helper")
+--     local distro_command = Helper.COMMAND
 
-    local system_id = string.upper(OsExecute.GetSystemId())
-    if (not distro_package_manager[system_id]) then
-        Log.Error("Could not read /etc/os-release. Assuming a non-Linux OS.")
-        return nil
-    end
+--     local system_id = string.upper(OsExecute.GetSystemId())
+--     local command = distro_command[system_id]
+--     if (not command) then
+--         Log.Error("Could not read /etc/os-release. Assuming a non-Linux OS.")
+--         return nil
+--     end
 
-    local command  = distro_package_manager[system_id].COMMAND
-    local packages = distro_package_manager[system_id].PACKAGES
-    local is_success = OsExecute.Run(string.format(command, packages))
-    if (not is_success) then
-        Log.Error("zzz")
-        return nil
-    end
-    
-end, "Install all dependencies and set up the project structure.", "Use 'init' to initialize the project.")
+--     local command_install = string.format("%s && %s && %s", command.UPDATE, command.UPGRADE, command.INSTALL)
+--     Log.Info("Hammer will update your system and install any missing packages.")
 
-cli:Run(arg or {})
+--     local is_install_success = OsExecute.Run(command_install)
+--     if (not is_install_success) then
+--         Log.Error("Error 1")
+--         return nil
+--     end
+
+--     local is_luarocks_build = OsExecute.ExecuteInDirectory("core/vendor/luarocks/", distro_command.LINUX.BUILD_LUAROCKS)
+--     if (not is_luarocks_build)then
+--         -- ...
+--     end
+
+--     OsExecute
+
+-- end, "Install all dependencies and set up the project structure.", "Use 'init' to initialize the project.")
+
+-- cli:Run(arg or {})

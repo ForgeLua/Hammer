@@ -1,6 +1,3 @@
 [submodule "core/vendor/luarocks"]
 	path = core/vendor/luarocks
 	url = https://github.com/luarocks/luarocks.git
-[submodule "vendor/trinitycore"]
-	path = vendor/trinitycore
-	url = https://github.com/ForgeLua/ForgeTrinityWotlk.git

@@ -20,21 +20,21 @@ Log = {
 }
 
 Log.Debug = (message) ->
-    color = Log.Colors[Log.Levels.DEBUG]
-    print "#{color}DEBUG:\27[0m #{#message}"
+    color = Log.Color[Log.Level.DEBUG]
+    print "#{color}DEBUG:\27[0m #{message}"
 
 Log.Info = (message) ->
-    color = Log.Colors[Log.Levels.INFO]
-    print "#{color}INFO:\27[0m #{#message}"
+    color = Log.Color[Log.Level.INFO]
+    print "#{color}INFO:\27[0m #{message}"
 
 Log.Warn = (message) ->
-    color = Log.Colors[Log.Levels.WARN]
-    print "#{color}WARN:\27[0m #{#message}"
+    color = Log.Color[Log.Level.WARN]
+    print "#{color}WARN:\27[0m #{message}"
 
 Log.Error = (message) ->
-    color = Log.Colors[Log.Levels.ERROR]
-    print "#{color}ERROR:\27[0m #{#message}"
+    color = Log.Color[Log.Level.ERROR]
+    print "#{color}ERROR:\27[0m #{message}"
 
 Log.Fatal = (message) ->
-    color = Log.Colors[Log.Levels.FATAL]
-    print "#{color}FATAL:\27[0m #{#message}"
+    color = Log.Color[Log.Level.FATAL]
+    print "#{color}FATAL:\27[0m #{message}"

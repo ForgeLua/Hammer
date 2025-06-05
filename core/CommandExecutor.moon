@@ -1,61 +1,77 @@
--- local Helper = require("core.os.helper")
--- local OsExecute = {}
+module "Core", package.seeall
+export OsExecute
 
--- function OsExecute.GetSystemId()
---     local os_release_file = io.open("/etc/os-release", "r")
---     if (not os_release_file) then
---         return nil
---     end
+Helper = require "core.os.helper"
 
---     local os_info = os_release_file:read("*all")
---     os_release_file:close()
---     return os_info:match("ID_LIKE=\"?(%w+)\"?")
--- end
+OsExecute = {}
 
--- function OsExecute.Run(command)
---     local success, result = pcall(os.execute, command)
---     return success and result
--- end
+OsExecute.GetSystemId = ->
+    os_release_file = os.open "/etc/os-release", "r"
+    return nil unless os_release_file
 
--- function OsExecute.GetRootDirectory()
---     local handle
---     if package.config:sub(1,1) == '\\' then
---         -- Windows
---         handle = io.popen("cd")
---     else
---         -- Unix/Linux/MacOS
---         handle = io.popen("pwd")
---     end
-    
---     if handle then
---         local result = handle:read("*a")
---         handle:close()
+    os_info = os_release_file\read "*all"
+    os_release_file\close!
 
---         result = result:gsub("[\r\n]+$", "")
---         return result
---     end
---     return nil
--- end
+    return os_info\match "ID_LIKE=\"?(%w+)\"?"
 
--- function OsExecute.GoToDirectory(directory)
---     local success, results = pcall(os.execute, string.format(Helper.COMMAND.UNIVERSAL.CD, directory))
---     return success, result
--- end
+OsExecute.Run = (command) ->
+    if (not command or command == "")
+        return false, "Command is empty"
 
--- function OsExecute.ExecuteInDirectory(directory, command)
---     if not directory or not command then
---         return false, "Paramètres manquants"
---     end
-    
---     local combined_cmd
---     if package.config:sub(1,1) == '\\' then
---         combined_cmd = string.format('cd /d "%s" && %s', directory, command)
---     else
---         combined_cmd = string.format('cd "%s" && %s', directory, command)
---     end
-    
---     local success, result = pcall(os.execute, combined_cmd)
---     return success, result
--- end
+    success, result = pcall(os.execute, command)
+    if not success
+        return false, result
 
--- return OsExecute
+    return true, result
+
+OsExecute.GetRootDirectory = ->
+    handle = nil
+    if package.config\sub(1, 1) == '\\'
+        -- Windows
+        handle = io.popen("cd")
+    else
+        -- Unix/Linux/MacOS
+        handle = io.popen("pwd")
+
+    if handle
+        result = handle\read "*a"
+        handle:close()
+
+        result = result\gsub("[\r\n]+$", "")
+        return result
+
+    return nil
+
+OsExecute.GoToDirectory = (directory) ->
+    if not directory or directory == ""
+        return false, "Directory not specified or not exists"
+
+    if package.config\sub(1, 1) == '\\'
+        -- Windows
+        command = string.format('cd /d "%s"', directory)
+    else
+        -- Unix/Linux/MacOS
+        command = string.format('cd "%s"', directory)
+
+    success, result = pcall(os.execute, command)
+    if not success
+        return false, result
+
+    return true, result
+
+OsExecute.ExecuteInDirectory = (directory, command) ->
+    if not directory or not command or directory == "" or command == ""
+        return false, "Missing parameters"
+
+    if package.config\sub(1, 1) == '\\'
+        -- Windows
+        combined_cmd = string.format('cd /d "%s" && %s', directory, command)
+    else
+        -- Unix/Linux/MacOS
+        combined_cmd = string.format('cd "%s" && %s', directory, command)
+
+    success, result = pcall(os.execute, combined_cmd)
+    if not success
+        return false, result
+
+    return true, result

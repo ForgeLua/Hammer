@@ -1,6 +1,0 @@
-#!/usr/bin/env moon
-
-require "core.package"
-
-command_line_interpreter = Core.CommandLineInterpreter!
-command_line_interpreter\Run(...)

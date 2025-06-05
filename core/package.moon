@@ -2,6 +2,7 @@
 require "core.CLI"
 require "core.CommandExecutor"
 require "core.Log"
+require "core.DotEnv"
 -- CORE :: END
 
 -- CORE COMMON :: START

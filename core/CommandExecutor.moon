@@ -6,20 +6,20 @@ Helper = require "core.os.helper"
 OsExecute = {}
 
 OsExecute.GetSystemId = ->
-    os_release_file = os.open "/etc/os-release", "r"
+    os_release_file = io.open "/etc/os-release", "r"
     return nil unless os_release_file
 
     os_info = os_release_file\read "*all"
     os_release_file\close!
 
-    return os_info\match "ID_LIKE=\"?(%w+)\"?"
+    return os_info\match "ID=\"?(%w+)\"?"
 
 OsExecute.Run = (command) ->
     if (not command or command == "")
         return false, "Command is empty"
 
     success, result = pcall(os.execute, command)
-    if not success
+    if not success or (result > 0)
         return false, result
 
     return true, result

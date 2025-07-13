@@ -6,4 +6,5 @@ creature\SetNpcFlag NPC_FLAG.VENDOR.AMMO
 creature\SetSpeed CT_SPEED_TYPE.WALK, 10
 creature\SetUnitClass UNIT_CLASS.MAGE
 creature\SetUnitFlags UNIT_FLAG.SILENCED
+creature\SetModelId(1, 1500000)
 creature\Flush!

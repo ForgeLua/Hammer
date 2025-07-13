@@ -7,11 +7,15 @@ class CreatureTemplate extends Core.Common.DatabaseObject
 
         @fields = {
             entry:                     { default: 0,           value: id                                                   }
+            difficulty_entry_1:        { default: 0,           value: nil,             override: "DifficultyEntry1"        }
+            difficulty_entry_2:        { default: 0,           value: nil,             override: "DifficultyEntry2"        }
+            difficulty_entry_3:        { default: 0,           value: nil,             override: "DifficultyEntry3"        }
             KillCredit1:               { default: 0,           value: nil                                                  }
             KillCredit2:               { default: 0,           value: nil                                                  }
-            modelid1:                  { default: 0,           value: nil                                                  }
-            modelid2:                  { default: 0,           value: nil                                                  }
-            modelid3:                  { default: 4,           value: nil                                                  }
+            modelid1:                  { default: 0,           value: nil,             override: "ModelId1"                }
+            modelid2:                  { default: 0,           value: nil,             override: "ModelId2"                }
+            modelid3:                  { default: 0,           value: nil,             override: "ModelId3"                }
+            modelid4:                  { default: 0,           value: nil,             override: "ModelId4"                }
             name:                      { default: 0,           value: nil                                                  }
             subname:                   { default: "'(NULL)'",  value: nil,             override: "SubName"                 }
             IconName:                  { default: "'(NULL)'",  value: nil                                                  }
@@ -66,31 +70,36 @@ class CreatureTemplate extends Core.Common.DatabaseObject
             name = column_data.override or column_name
 
             @["Get#{name\gsub("^%l", string.upper)}"] = ->
-                return @fields[column_name].value or @fields[column_name].default
+                return @Get column_name
 
             @["Set#{name\gsub("^%l", string.upper)}"] = (self, value) -> 
-                @fields[column_name].value = value
+                @Set column_name, value
                 return @
 
     SetDifficultyEntry: (id, entry) =>
         if id > 0 and id < 4
-            @Set "difficulty_entry_#{id}", entry
+            @["SetDifficultyEntry#{id}"](@, entry)
+        return @
+
+    SetModelId: (id, model) =>
+        if id > 0 and id < 5
+            @["SetModelId#{id}"](@, model)
         return @
     
     SetKillCredit: (id, entry) =>
         if id > 0 and id < 3
-            @Set "KillCredit#{id}", entry
+            @["SetKillCredit#{id}"](@, entry)
         return @
 
     SetLevel: (minlevel, maxlevel) =>
-        @Set "minlevel", minlevel
-        @Set "maxlevel", maxlevel or minlevel
+        @\SetMinLevel minlevel
+        @\SetMaxLevel maxlevel or minlevel
         return @
 
     SetSpeed: (speed_type, speed_value) =>
         switch speed_type
             when CT_SPEED_TYPE.WALK
-                @SetSpeedWalk speed_value
+                @\SetSpeedWalk speed_value
             when CT_SPEED_TYPE.RUN
-                @SetSpeedRun speed_value
+                @\SetSpeedRun speed_value
         return @

@@ -7,64 +7,72 @@ class CreatureTemplate extends Core.Common.DatabaseObject
         @table_name = "creature_template"
 
         @fields = {
-            difficulty_entry_1: 0
-            difficulty_entry_2: 0
-            difficulty_entry_3: 0
-            KillCredit1: 0
-            KillCredit2: 0
-            modelid1: 0
-            modelid2: 0
-            modelid3: 0
-            modelid4: 0
-            name: "Forge Creature #{id}"
-            subname: ""
-            IconName: ""
-            gossip_menu_id: 0
-            minlevel: 1
-            maxlevel: 1
-            exp: 0
-            faction: 35
-            npcflag: 0
-            speed_walk: 1
-            speed_run: 1.14
-            scale: 1
-            rank: 0
-            dmgschool: 0
-            BaseAttackTime: 0
-            RangeAttackTime: 0
-            BaseVariance: 1
-            RangeVariance: 1
-            unit_class: 0
-            unit_flags: 0
-            unit_flags2: 0
-            dynamicflags: 0
-            family: 0
-            type: 0
-            type_flags: 0
-            lootid: 0
-            pickpocketloot: 0
-            skinloot: 0
-            PetSpellDataId: 0
-            VehicleId: 0
-            mingold: 0
-            maxgold: 0
-            AIName: ''
-            MovementType: 0
-            HoverHeight: 1
-            HealthModifier: 1
-            ManaModifier: 1
-            ArmorModifier: 1
-            DamageModifier: 1
-            ExperienceModifier: 1
-            RacialLeader: 0
-            movementID: 0
-            RegenHealth: 1
-            mechanic_immune_mask: 0
-            spell_school_immune_mask: 0
-            flags_extra: 0
-            ScriptName: ''
-            VerifiedBuild: 0
+            entry:                     { default: 0,           value: id                                                   }
+            KillCredit1:               { default: 0,           value: nil                                                  }
+            KillCredit2:               { default: 0,           value: nil                                                  }
+            modelid1:                  { default: 0,           value: nil                                                  }
+            modelid2:                  { default: 0,           value: nil                                                  }
+            modelid3:                  { default: 4,           value: nil                                                  }
+            entry:                     { default: 0,           value: nil                                                  }
+            name:                      { default: 0,           value: nil                                                  }
+            subname:                   { default: "(NULL)",    value: nil,             override: "SubName"                 }
+            IconName:                  { default: "(NULL)",    value: nil                                                  }
+            gossip_menu_id:            { default: 0,           value: nil,             override: "GossipMenuId"            }
+            minlevel:                  { default: 1,           value: nil,             override: "MinLevel"                }
+            maxlevel:                  { default: 1,           value: nil,             override: "MaxLevel"                }
+            exp:                       { default: 0,           value: nil                                                  }
+            faction:                   { default: 0,           value: nil                                                  }
+            npcflag:                   { default: 0,           value: nil,             override: "NpcFlag"                 }
+            speed_walk:                { default: 1,           value: nil,             override: "SpeedWalk"               }
+            speed_run:                 { default: 1.14286,     value: nil,             override: "SpeedRun"                }
+            scale:                     { default: 1,           value: nil                                                  }
+            rank:                      { default: 0,           value: nil                                                  }
+            dmgschool:                 { default: 0,           value: nil,             override: "DmgSchool"               }
+            BaseAttackTime:            { default: 0,           value: nil                                                  }
+            RangeAttackTime:           { default: 0,           value: nil                                                  }
+            BaseVariance:              { default: 1,           value: nil                                                  }
+            RangeVariance:             { default: 1,           value: nil                                                  }
+            unit_class:                { default: 0,           value: nil,             override: "UnitClass"               }
+            unit_flags:                { default: 0,           value: nil,             override: "UnitFlags"               }
+            unit_flags2:               { default: 0,           value: nil,             override: "UnitFlags2"              }
+            dynamicflags:              { default: 0,           value: nil,             override: "Dynamicflags"            }
+            family:                    { default: 0,           value: nil                                                  }
+            type:                      { default: 0,           value: nil                                                  }
+            type_flags:                { default: 0,           value: nil,             override: "TypeFlags"               }
+            lootid:                    { default: 0,           value: nil                                                  }
+            pickpocketloot:            { default: 0,           value: nil,             override: "PickPocketLoot"          }
+            skinloot:                  { default: 0,           value: nil,             override: "SkinLoot"                }
+            PetSpellDataId:            { default: 0,           value: nil                                                  }
+            VehicleId:                 { default: 0,           value: nil                                                  }
+            mingold:                   { default: 0,           value: nil,             override: "MinGold"                 }
+            maxgold:                   { default: 0,           value: nil,             override: "MaxGold"                 }
+            AIName:                    { default: "",          value: nil                                                  }
+            MovementType:              { default: 0,           value: nil                                                  }
+            HoverHeight:               { default: 1,           value: nil                                                  }
+            HealthModifier:            { default: 1,           value: nil                                                  }
+            ManaModifier:              { default: 1,           value: nil                                                  }
+            ArmorModifier:             { default: 1,           value: nil                                                  }
+            DamageModifier:            { default: 1,           value: nil                                                  }
+            ExperienceModifier:        { default: 1,           value: nil                                                  }
+            RacialLeader:              { default: 0,           value: nil                                                  }
+            movementID:                { default: 0,           value: nil                                                  }
+            RegenHealth:               { default: 1,           value: nil                                                  }
+            mechanic_immune_mask:      { default: 0,           value: nil,             override: "MechanicImmuneMask"      }
+            spell_school_immune_mask:  { default: 0,           value: nil,             override: "SpellSchoolImmuneMask"   }
+            flags_extra:               { default: 0,           value: nil,             override: "FlagsExtra"              }
+            ScriptName:                { default: "",          value: nil                                                  }
+            VerifiedBuild:             { default: 0,           value: nil                                                  }
         }
+
+        for column_name, column_data in pairs(@fields)
+            name = column_data.override or column_name
+
+            @["Get#{name\gsub("^%l", string.upper)}"] = ->
+                return @fields[column_name].value or @fields[column_name].default
+
+            @["Set#{name\gsub("^%l", string.upper)}"] = (self, value) -> 
+                @fields[column_name].value = value
+                return @
 
     SetDifficultyEntry: (id, entry) =>
         if id > 0 and id < 4
@@ -75,46 +83,10 @@ class CreatureTemplate extends Core.Common.DatabaseObject
         if id > 0 and id < 3
             @Set "KillCredit#{id}", entry
         return @
-    
-    SetName: (name) =>
-        @Set "name", name
-        return @
-
-    SetSubname: (subname) =>
-        @Set "subname", subname
-        return @
-    
-    SetIconname: (icon_name) =>
-        @Set "IconName", icon_name
-        return @
-
-    SetGossipMenuId: (gossip_menu_id) =>
-        @Set "gossip_menu_id", gossip_menu_id
-        return @
 
     SetLevel: (minlevel, maxlevel) =>
         @Set "minlevel", minlevel
         @Set "maxlevel", maxlevel or minlevel
-        return @
-
-    SetExp: (exp) =>
-        @Set "exp", exp
-        return @
-
-    SetFaction: (faction) =>
-        @Set "faction", faction
-        return @
-
-    SetNpcFlag: (flag) =>
-        @Set "npcflag", flag
-        return @
-
-    SetSpeedWalk: (speed_walk) =>
-        @Set "speed_walk", speed_walk
-        return @
-    
-    SetSpeedRun: (speed_run) =>
-        @Set "speed_run", speed_run
         return @
 
     SetSpeed: (speed_type, speed_value) =>
@@ -123,82 +95,6 @@ class CreatureTemplate extends Core.Common.DatabaseObject
                 @SetSpeedWalk speed_value
             when CT_SPEED_TYPE.RUN
                 @SetSpeedRun speed_value
-        return @
-
-    SetScale: (scale) =>
-        @Set "scale", scale
-        return @
-
-    SetRank: (rank) =>
-        @Set "rank", rank
-        return @
-
-    SetDmgSchool: (dmg_school) =>
-        @Set "dmgschool", dmg_school
-        return @
-
-    SetBaseAttackTime: (base_attack_time) =>
-        @Set "BaseAttackTime", base_attack_time
-        return @
-
-    SetRangeAttackTime: (range_attack_time) =>
-        @Set "RangeAttackTime", range_attack_time
-        return @
-
-    SetBaseVariance: (base_variance) =>
-        @Set "BaseVariance", base_variance
-        return @
-
-    SetRangeVariance: (range_variance) =>
-        @Set "RangeVariance", range_variance
-        return @
-
-    SetUnitClass: (unit_class) =>
-        @Set "unit_class", unit_class
-        return @
-
-    SetUnitFlags: (unit_flags) =>
-        @Set "unit_flags", unit_flags
-        return @
-
-    SetUnitFlags2: (unit_flags2) =>
-        @Set "unit_flags2", unit_flags2
-        return @
-
-    SetDynamicFlags: (dynamic_flags) =>
-        @Set "dynamicflags", dynamic_flags
-        return @
-
-    SetFamily: (family) =>
-        @Set "family", family
-        return @
-
-    SetType: (creature_type) =>
-        @Set "type", creature_type
-        return @
-    
-    SetTypeFlags: (type_flags) =>
-        @Set "type_flags", type_flags
-        return @
-
-    SetLootId: (lootid) =>
-        @Set "lootid", lootid
-        return @
-
-    SetPickPocketLoot: (pickpocketloot) =>
-        @Set "pickpocketloot", pickpocketloot
-        return @
-
-    SetSkinLoot: (skinloot) =>
-        @Set "skinloot", skinloot
-        return @
-
-    SetPetSpellDataId: (spell_data_id) =>
-        @Set "PetSpellDataId", spell_data_id
-        return @
-    
-    SetVehicleId: (vehicleid) =>
-        @Set "VehicleId", vehicleid
         return @
 
     

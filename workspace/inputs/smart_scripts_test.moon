@@ -1,20 +1,19 @@
 
 -- Simple SmartScript
-smart_script = Core.Context.DB.SmartScript 123450, 0
+-- smart_script = Core.Context.DB.SmartScript 123450, 0
 
-with smart_script
-    \SetId 1
-    \When SMART_EVENT.AGGRO
-    \Do SMART_ACTION.TALK, 0
-    \On SMART_TARGET.SELF
-    \SetComment("Say something on aggro !")
-smart_script\Flush!
+-- with smart_script
+--     \SetId 1
+--     \When SMART_EVENT.AGGRO
+--     \Do SMART_ACTION.TALK, 0
+--     \On SMART_TARGET.SELF
+--     \SetComment("Say something on aggro !")
+-- smart_script\Flush!
 
 -- More advanced smart_script
 smart_script = Core.Context.DB.SmartScript 123450, 0
 
 with smart_script
-    \SetId 1
     \When SMART_EVENT.AGGRO
     \Do SMART_ACTION.TALK, 0
     \On SMART_TARGET.SELF

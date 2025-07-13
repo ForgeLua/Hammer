@@ -15,7 +15,7 @@ class SmartScript extends Core.Common.DatabaseObject
         @fields = {
             entryorguid:        { default: 0,           value: source_id,       override: "EntryOrGuid"             }
             source_type:        { default: 0,           value: nil,             override: "SourceType"              }
-            id:                 { default: 0,           value: nil                                                  }
+            id:                 { default: 0,           value: 0                                                    }
             link:               { default: 0,           value: nil                                                  }
             event_type:         { default: 0,           value: nil,             override: "EventType"               }
             event_phase_mask:   { default: 0,           value: nil,             override: "EventPhaseMask"          }
@@ -88,7 +88,7 @@ class SmartScript extends Core.Common.DatabaseObject
     
     ResetEventActionTarget: =>
         for column_name, column_data in pairs(@fields)
-            if (column_name != "link" and column_name != "id")
+            if (column_name != "link" and column_name != "id" and column_name != "entryorguid" and column_name != "source_type")
                 name = column_data.override or column_name
                 @["Set#{name\gsub("^%l", string.upper)}"](@, column_data.default)
 
@@ -122,6 +122,7 @@ class SmartScript extends Core.Common.DatabaseObject
 
             for field, value in pairs entry
                 table.insert fields, field
+                print(field, value)
                 if type(value) == "string"
                     escaped_value = value\gsub "'", "\\'"
                     table.insert values, "'#{escaped_value}'"

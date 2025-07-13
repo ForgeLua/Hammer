@@ -85,6 +85,22 @@ class SmartScript extends Core.Common.DatabaseObject
         @\SetTargetZ z
         @\SetTargetO o
         return @
+    
+    ResetEventActionTarget: =>
+        for column_name, column_data in pairs(@fields)
+            if (column_name != "link" and column_name != "id")
+                name = column_data.override or column_name
+                @["Set#{name\gsub("^%l", string.upper)}"](@, column_data.default)
+
+    NewEntry: =>
+        if @dirty
+            @SaveCurrentEntry!
+        @current_id += 1
+        @\SetId @current_id
+        if (@\GetLink! != 0)
+            @\SetLink 0
+        @ResetEventActionTarget!
+        return @
 
     SaveCurrentEntry: =>
         entry = {}

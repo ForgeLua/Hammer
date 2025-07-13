@@ -12,6 +12,10 @@ class CreatureTemplate extends Core.Common.DatabaseObject
             difficulty_entry_3: 0
             KillCredit1: 0
             KillCredit2: 0
+            modelid1: 0
+            modelid2: 0
+            modelid3: 0
+            modelid4: 0
             name: "Forge Creature #{id}"
             subname: ""
             IconName: ""
@@ -23,8 +27,6 @@ class CreatureTemplate extends Core.Common.DatabaseObject
             npcflag: 0
             speed_walk: 1
             speed_run: 1.14
-            speed_swim: 1
-            speed_flight: 1
             scale: 1
             rank: 0
             dmgschool: 0
@@ -37,10 +39,6 @@ class CreatureTemplate extends Core.Common.DatabaseObject
             unit_flags2: 0
             dynamicflags: 0
             family: 0
-            trainer_type: 0
-            trainer_spell: 0
-            trainer_class: 0
-            trainer_race: 0
             type: 0
             type_flags: 0
             lootid: 0
@@ -59,7 +57,7 @@ class CreatureTemplate extends Core.Common.DatabaseObject
             DamageModifier: 1
             ExperienceModifier: 1
             RacialLeader: 0
-            movementId: 0
+            movementID: 0
             RegenHealth: 1
             mechanic_immune_mask: 0
             spell_school_immune_mask: 0
@@ -119,24 +117,12 @@ class CreatureTemplate extends Core.Common.DatabaseObject
         @Set "speed_run", speed_run
         return @
 
-    SetSpeedSwim: (speed_swim) =>
-        @Set "speed_swim", speed_swim
-        return @
-
-    SetSpeedFlight: (speed_flight) =>
-        @Set "speed_flight", speed_flight
-        return @
-
     SetSpeed: (speed_type, speed_value) =>
         switch speed_type
-            when SPEED_TYPE.WALK
+            when CT_SPEED_TYPE.WALK
                 @SetSpeedWalk speed_value
-            when SPEED_TYPE.RUN
+            when CT_SPEED_TYPE.RUN
                 @SetSpeedRun speed_value
-            when SPEED_TYPE.SWIM
-                @SetSpeedSwim speed_value
-            when SPEED_TYPE.FLIGHT
-                @SetSpeedFlight speed_value
         return @
 
     SetScale: (scale) =>
@@ -185,8 +171,4 @@ class CreatureTemplate extends Core.Common.DatabaseObject
 
     SetFamily: (family) =>
         @Set "family", family
-        return @
-
-    SetTrainerType: (trainer_type) =>
-        @Set "trainer_type", trainer_type
         return @

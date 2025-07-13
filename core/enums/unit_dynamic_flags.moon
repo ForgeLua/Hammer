@@ -1,4 +1,4 @@
-_G["DYNAMIC_FLAG"] = {
+_G["UNIT_DYNAMIC_FLAG"] = {
     NONE:                       0x00
     LOOTABLE:                   0x01
     TRACK_UNIT:                 0x02

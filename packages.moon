@@ -22,6 +22,7 @@ require("core.enums.creature_template.speed_type")
 
 -- Context DB
 require("core.context.db.creature_template")
+require("core.context.db.smart_scripts")
 
 -- All processors
 require("core.utils.ScriptProcessor")

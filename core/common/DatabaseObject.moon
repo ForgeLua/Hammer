@@ -2,8 +2,7 @@ module "Core.Common", package.seeall
 export DatabaseObject
 
 class DatabaseObject
-    new: (id) =>
-        @id = id
+    new: () =>
         @fields = {}
         @table_name = ""
         @dirty = false
@@ -51,4 +50,4 @@ class DatabaseObject
             if query
                 @dirty = false
                 Core.Common.Database\AddQuery query
-                Core.Common.Logger\Info("Flushed #{@@__name}(#{@id})")
+                Core.Common.Logger\Info("Flushed #{@@__name}")

@@ -3,7 +3,6 @@ export CreatureTemplate
 
 class CreatureTemplate extends Core.Common.DatabaseObject
     new: (id) =>
-        super id
         @table_name = "creature_template"
 
         @fields = {
@@ -13,7 +12,6 @@ class CreatureTemplate extends Core.Common.DatabaseObject
             modelid1:                  { default: 0,           value: nil                                                  }
             modelid2:                  { default: 0,           value: nil                                                  }
             modelid3:                  { default: 4,           value: nil                                                  }
-            entry:                     { default: 0,           value: nil                                                  }
             name:                      { default: 0,           value: nil                                                  }
             subname:                   { default: "(NULL)",    value: nil,             override: "SubName"                 }
             IconName:                  { default: "(NULL)",    value: nil                                                  }
@@ -96,5 +94,3 @@ class CreatureTemplate extends Core.Common.DatabaseObject
             when CT_SPEED_TYPE.RUN
                 @SetSpeedRun speed_value
         return @
-
-    

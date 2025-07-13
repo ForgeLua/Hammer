@@ -5,7 +5,7 @@
 <h1 align="center">🔨 Hammer</h1>
 
 <p align="center">
-  <strong>A Lua/MoonScript Framework for AzerothCore Modding</strong>
+  <strong>A Lua/MoonScript Framework for TrinityCore Modding</strong>
   <br />
   Bringing TsWow-like functionality to the Lua ecosystem.
 </p>
@@ -18,11 +18,11 @@
 
 ---
 
-**Hammer** is a modern Lua/MoonScript framework designed for **AzerothCore** modding. Inspired by TsWow, Hammer aims to provide a clean, intuitive, and powerful way to create database-driven content for World of Warcraft servers using familiar Lua scripting patterns.
+**Hammer** is a modern Lua/MoonScript framework designed for **TrinityCore** modding. Inspired by TsWow, Hammer aims to provide a clean, intuitive, and powerful way to create database-driven content for World of Warcraft servers using familiar Lua scripting patterns.
 
 ## ✨ Why Hammer?
 
-*   🎯 **AzerothCore Focused**: Built specifically for AzerothCore, ensuring perfect compatibility.
+*   🎯 **TrinityCore Focused**: Built specifically for TrinityCore, ensuring perfect compatibility.
 *   🌙 **MoonScript Power**: Leverage MoonScript's elegant syntax for cleaner, more maintainable code.
 *   🗃️ **Database-First Approach**: Streamlined database object management and SQL generation.
 *   🔧 **Developer-Friendly**: Intuitive API design inspired by modern frameworks.
@@ -71,7 +71,7 @@ hammer/
 
 ### Prerequisites
 *   MoonScript compiler
-*   AzerothCore server
+*   TrinityCore server
 *   Basic knowledge of Lua/MoonScript
 
 ### Installation
@@ -192,12 +192,12 @@ Hammer is licensed under **GPL v3**. See [LICENSE](LICENSE) for details.
 ## 🙏 Acknowledgments
 
 *   **TsWow Team**: For the inspiration and architectural ideas
-*   **AzerothCore Team**: For the amazing server core
+*   **TrinityCore Team**: For the amazing server core
 *   **MoonScript Community**: For the beautiful language
 *   **Eluna Engine**: For pioneering Lua scripting in WoW
 
 ---
 
 <p align="center">
-  <strong>Hammer - Forging the future of AzerothCore modding</strong>
+  <strong>Hammer - Forging the future of TrinityCore modding</strong>
 </p>

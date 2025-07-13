@@ -13,8 +13,8 @@ class CreatureTemplate extends Core.Common.DatabaseObject
             modelid2:                  { default: 0,           value: nil                                                  }
             modelid3:                  { default: 4,           value: nil                                                  }
             name:                      { default: 0,           value: nil                                                  }
-            subname:                   { default: "(NULL)",    value: nil,             override: "SubName"                 }
-            IconName:                  { default: "(NULL)",    value: nil                                                  }
+            subname:                   { default: "'(NULL)'",  value: nil,             override: "SubName"                 }
+            IconName:                  { default: "'(NULL)'",  value: nil                                                  }
             gossip_menu_id:            { default: 0,           value: nil,             override: "GossipMenuId"            }
             minlevel:                  { default: 1,           value: nil,             override: "MinLevel"                }
             maxlevel:                  { default: 1,           value: nil,             override: "MaxLevel"                }

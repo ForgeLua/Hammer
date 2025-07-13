@@ -172,3 +172,33 @@ class CreatureTemplate extends Core.Common.DatabaseObject
     SetFamily: (family) =>
         @Set "family", family
         return @
+
+    SetType: (creature_type) =>
+        @Set "type", creature_type
+        return @
+    
+    SetTypeFlags: (type_flags) =>
+        @Set "type_flags", type_flags
+        return @
+
+    SetLootId: (lootid) =>
+        @Set "lootid", lootid
+        return @
+
+    SetPickPocketLoot: (pickpocketloot) =>
+        @Set "pickpocketloot", pickpocketloot
+        return @
+
+    SetSkinLoot: (skinloot) =>
+        @Set "skinloot", skinloot
+        return @
+
+    SetPetSpellDataId: (spell_data_id) =>
+        @Set "PetSpellDataId", spell_data_id
+        return @
+    
+    SetVehicleId: (vehicleid) =>
+        @Set "VehicleId", vehicleid
+        return @
+
+    

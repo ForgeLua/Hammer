@@ -122,7 +122,7 @@ class SmartScript extends Core.Common.DatabaseObject
 
             for field, value in pairs entry
                 table.insert fields, field
-                print(field, value)
+
                 if type(value) == "string"
                     escaped_value = value\gsub "'", "\\'"
                     table.insert values, "'#{escaped_value}'"

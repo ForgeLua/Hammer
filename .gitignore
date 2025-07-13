@@ -39,3 +39,8 @@ luac.out
 *.x86_64
 *.hex
 
+# SQL Outputs
+*.sql
+
+# Lua Outputs (todo: remove this and separate with git branch)
+*.lua

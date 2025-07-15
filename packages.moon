@@ -2,9 +2,11 @@
 require("core.common.Logger")
 
 require("core.utils.FileExplorer")
+require("core.utils.BinaryStream")
 
 require("core.common.Database")
 require("core.common.DatabaseObject")
+require("core.common.DBCObject")
 
 -- Enums
 require("core.enums.creature_elite_type")

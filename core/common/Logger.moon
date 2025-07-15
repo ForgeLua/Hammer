@@ -29,8 +29,8 @@ Logger = {
         print "#{color}WARN:\27[0m #{message}"
     Error: (message) =>
         color = Color[Level.ERROR]
-        print "#{color}ERROR:\27[0m #{message}"
+        error "#{color}ERROR:\27[0m #{message}"
     Fatal: (message) =>
         color = Color[Level.FATAL]
-        print "#{color}FATAL:\27[0m #{message}"
+        error "#{color}FATAL:\27[0m #{message}"
 }

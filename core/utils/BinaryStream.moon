@@ -9,15 +9,17 @@ class BinaryStream
             for i = 1, #data
                 @data[i] = data\byte i
         
-        @post = 1
-
+        @pos = 1
+        return @
+    
+    -- Read Methods
     ReadBytes: (count) =>
         if @pos + count > #@data + 1
-            Core.Common.Logger.Error "Attempting to read beyond the end of the stream"
+            Core.Common.Logger\Error "Attempting to read beyond the end of the stream"
         
         chunk = {}
-        for i = 0, count - 1 do
-            table.insert chunk, @data[@pos + 1]
+        for i = 0, count - 1
+            table.insert chunk, @data[@pos + i]
         
         @pos = @pos + count
         return chunk
@@ -55,3 +57,35 @@ class BinaryStream
         if str_end
             return string_block_data\sub str_start, str_end - 1
         return string_block_data\sub str_start
+    
+    -- Write Methods
+    WriteBytes: (bytes) =>
+        for i = 1, #bytes
+            @data[@pos + i - 1] = bytes[i]
+        @pos = @pos + #bytes
+        
+        return @
+
+    WriteUInt32: (value) =>
+        @WriteBytes {
+            value % 256
+            math.floor(value / 256) % 256
+            math.floor(value / 65536) % 256
+            math.floor(value / 16777216) % 256
+        }
+        
+        return @
+
+    WriteInt32: (value) =>
+        if value < 0
+            value = value + 2 ^ 32
+        @WriteUInt32 value
+        
+        return @
+    
+    WriteFloat: (value) =>
+        -- Todo: Add WriteFloat method
+    
+    ToString: =>
+        return string.char(table.unpack(@data))
+    

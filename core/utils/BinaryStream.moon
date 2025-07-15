@@ -24,7 +24,7 @@ class BinaryStream
         return chunk
 
     ReadUInt32: =>
-        a, b, c, d = unpack @ReadBytes(4)
+        a, b, c, d = unpack @ReadBytes 4
         return a + b * 256 + c * 256 ^ 2 + d * 256 ^ 3
 
     ReadInt32: =>
@@ -32,9 +32,9 @@ class BinaryStream
         return val >= 2 ^ 31 and val - 2 ^ 32 or val
 
     ReadFloat: =>
-        a, b, c, d = unpack @ReadBytes(4)
+        a, b, c, d = unpack @ReadBytes 4
         sign = (d >= 128) and -1 or 1
-        exp = (d % 128) * 2 + math.floor(c / 128)
+        exp = (d % 128) * 2 + math.floor c / 128
         mant = a + b * 256 + (c % 128) * 65536
 
         if exp == 255
@@ -92,8 +92,8 @@ class BinaryStream
         data_len = #@data
 
         for i = 1, data_len, CHUNK_SIZE
-            j = math.min(i + CHUNK_SIZE - 1, data_len)
-            chunk_str = string.char(unpack(@data, i, j))
+            j = math.min i + CHUNK_SIZE - 1, data_len
+            chunk_str = string.char unpack @data, i, j
             table.insert parts, chunk_str
 
         return table.concat parts

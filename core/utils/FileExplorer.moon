@@ -42,7 +42,15 @@ FileExplorer = {
         file = io.open path, "r"
         if file
             content = file\read "*a"
-            file\close
+            file\close!
             return content
         return nil
+
+    WriteFile: (path, data) =>
+        file = io.open path, "wb"
+        if file
+            file\write(data)
+            file\close!
+            return true
+        return false
 }

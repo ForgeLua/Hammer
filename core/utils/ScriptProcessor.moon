@@ -20,7 +20,7 @@ ScriptProcessor = {
             Core.Common.Logger\Info "Successfully processed #{filename} -> #{output_path}"
             return true
         else
-            Core.Common.Logger\Error "Failed to generate SQL for #{filename}"
+            -- Core.Common.Logger\Error "Failed to generate SQL for #{filename}"
             return false
 
     ProcessAllFiles: =>

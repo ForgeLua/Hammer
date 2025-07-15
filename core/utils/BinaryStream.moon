@@ -10,7 +10,6 @@ class BinaryStream
                 @data[i] = data\byte i
         
         @pos = 1
-        return @
     
     -- Read Methods
     ReadBytes: (count) =>
@@ -21,11 +20,11 @@ class BinaryStream
         for i = 0, count - 1
             table.insert chunk, @data[@pos + i]
         
-        @pos = @pos + count
+        @pos += count
         return chunk
 
     ReadUInt32: =>
-        a, b, c, d = table.unpack(@ReadBytes(4))
+        a, b, c, d = unpack @ReadBytes 4
         return a + b * 256 + c * 256 ^ 2 + d * 256 ^ 3
 
     ReadInt32: =>
@@ -33,9 +32,9 @@ class BinaryStream
         return val >= 2 ^ 31 and val - 2 ^ 32 or val
 
     ReadFloat: =>
-        a, b, c, d = table.unpack(@ReadBytes(4))
+        a, b, c, d = unpack @ReadBytes 4
         sign = (d >= 128) and -1 or 1
-        exp = (d % 128) * 2 + math.floor(c / 128)
+        exp = (d % 128) * 2 + math.floor c / 128
         mant = a + b * 256 + (c % 128) * 65536
 
         if exp == 255
@@ -62,7 +61,7 @@ class BinaryStream
     WriteBytes: (bytes) =>
         for i = 1, #bytes
             @data[@pos + i - 1] = bytes[i]
-        @pos = @pos + #bytes
+        @pos += #bytes
         
         return @
 
@@ -78,7 +77,7 @@ class BinaryStream
 
     WriteInt32: (value) =>
         if value < 0
-            value = value + 2 ^ 32
+            value += 2 ^ 32
         @WriteUInt32 value
         
         return @
@@ -87,5 +86,15 @@ class BinaryStream
         -- Todo: Add WriteFloat method
     
     ToString: =>
-        return string.char(table.unpack(@data))
+        CHUNK_SIZE = 4096
+        parts = {}
+
+        data_len = #@data
+
+        for i = 1, data_len, CHUNK_SIZE
+            j = math.min i + CHUNK_SIZE - 1, data_len
+            chunk_str = string.char unpack @data, i, j
+            table.insert parts, chunk_str
+
+        return table.concat parts
     
